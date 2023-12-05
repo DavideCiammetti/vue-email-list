@@ -7,10 +7,18 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div id="app">
-      <ul>
-        <li v-for="email in mailArr">{{email}}</li>
-      </ul>
+    <div id="app" v-cloak>
+     <main id="main">
+        <div class="button-container">
+            <button class="button" :class="notShowMail === 2 ? 'd-none': ''" @click="showMail">Show email</button>
+            <p v-show="notShowMail === 2" class="curious">Troppo curioso mi dispiace</p>
+       </div>
+       <div v-show="showMailClick" class="main-list-container">
+            <ul class="list-container">
+                <li v-for="email in mailArr" class="list">{{email}}</li>
+            </ul>
+        </div>
+     </main>
     </div>
     <!-- vue js -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
