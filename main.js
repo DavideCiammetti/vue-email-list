@@ -7,12 +7,18 @@ createApp({
     return {
         'apiUru':'https://flynn.boolean.careers/exercises/api/random/mail',
         'mail': '',
+        'mailArr': [],
     };
   },
+  methods:{
+  },
   created(){
-    axios.get(this.apiUru).then((response)=>{
-        console.log(response.data);
-        this.mail = response.data.response;
-    });
+    for(let i = 0; i < 10; i++){
+        axios.get(this.apiUru).then((response)=>{
+            console.log(response.data);
+            this.mail = response.data.response;
+            this.mailArr.push( this.mail);
+        });
+    }
   }
 }).mount('#app')
